@@ -1,3 +1,3 @@
 # Movies Watchlist React App
 
-Using OBDI API
+Using OMDB API
