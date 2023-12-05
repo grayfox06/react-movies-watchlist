@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const tempMovieData = [
   {
@@ -53,13 +53,15 @@ const average = (arr) =>
 const API_KEY = 'a2738059';
 
 export default function App() {
-  const [movies, setMovies] = useState(tempMovieData);
-  const [watched, setWatched] = useState(tempWatchedData);
+  const [movies, setMovies] = useState([]);
+  const [watched, setWatched] = useState([]);
   const [isOpen2, setIsOpen2] = useState(true);
 
-  fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=interstellar`)
-    .then((res) => res.json())
-    .then((data) => console.log(data));
+  useEffect(() => {
+    fetch(`http://www.omdbapi.com/?s=interstellar&apikey=${API_KEY}`)
+      .then((res) => res.json())
+      .then((data) => setMovies(data.Search));
+  }, []);
 
   return (
     <>
