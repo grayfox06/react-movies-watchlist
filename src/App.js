@@ -51,7 +51,8 @@ const tempWatchedData = [
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
-const API_KEY = 'a2738059';
+const API_KEY = process.env.REACT_APP_API_KEY;
+console.log(API_KEY);
 
 export default function App() {
   const [query, setQuery] = useState('');
