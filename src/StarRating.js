@@ -33,9 +33,11 @@ export default function StarRating({
   const [rating, setRating] = useState(defaultRating);
   const [tempRating, setTempRating] = useState(0);
 
-  function handleRating(rating) {
-    setRating(rating);
-    onSetRating(rating);
+  function handleRating(ratingValue) {
+    setRating(ratingValue);
+    if (typeof onSetRating === 'function') {
+      onSetRating(ratingValue);
+    }
   }
 
   const textStyle = {
