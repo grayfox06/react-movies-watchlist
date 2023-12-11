@@ -54,7 +54,7 @@ const average = (arr) =>
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 export default function App() {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('Inception');
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
