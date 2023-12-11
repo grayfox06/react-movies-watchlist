@@ -92,8 +92,12 @@ export default function App() {
         setIsLoading(true);
         setError('');
 
+        const sanitizedQuery = query.trim().replace(/[^a-zA-Z0-9 ]/g, '');
+
         const res = await fetch(
-          `https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`
+          `https://www.omdbapi.com/?s=${encodeURIComponent(
+            sanitizedQuery
+          )}&apikey=${API_KEY}`
         );
 
         // Handle network failure
