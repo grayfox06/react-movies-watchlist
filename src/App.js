@@ -93,7 +93,7 @@ export default function App() {
         setError('');
 
         const res = await fetch(
-          `http://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`
+          `https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`
         );
 
         // Handle network failure
@@ -276,7 +276,7 @@ function MovieDetails({ selectedId, onCloseMovie }) {
       setIsLoading(true);
 
       const res = await fetch(
-        `http://www.omdbapi.com/?i=${selectedId}&apikey=${API_KEY}`
+        `https://www.omdbapi.com/?i=${selectedId}&apikey=${API_KEY}`
       );
       const data = await res.json();
       setMovie(data);
