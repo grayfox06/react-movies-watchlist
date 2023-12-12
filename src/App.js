@@ -270,7 +270,14 @@ function MovieList({ movies, onSelectMovie }) {
 function Movie({ movie, onSelectMovie }) {
   return (
     <li onClick={() => onSelectMovie(movie.imdbID)}>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
+      <img
+        src={
+          movie.Poster !== 'N/A'
+            ? movie.Poster
+            : 'https://www.mockofun.com/wp-content/uploads/2019/10/movie-poster-credits-178.jpg'
+        }
+        alt={`${movie.Title} poster`}
+      />
       <h3>{movie.Title}</h3>
       <div>
         <p>
@@ -354,7 +361,14 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
             <button className='btn-back' onClick={onCloseMovie}>
               ⬅
             </button>{' '}
-            <img src={poster} alt={`Poster of ${movie}`} />
+            <img
+              src={
+                poster !== 'N/A'
+                  ? poster
+                  : 'https://www.mockofun.com/wp-content/uploads/2019/10/movie-poster-credits-178.jpg'
+              }
+              alt={`Poster of ${movie}`}
+            />
             <div className='details-overview'>
               <h2>{title}</h2>
               <p>
@@ -448,7 +462,14 @@ function WatchedMovieList({ watched, onDeleteWatched }) {
 function WatchedMovie({ movie, onDeleteWatched }) {
   return (
     <li>
-      <img src={movie.poster} alt={`${movie.title} poster`} />
+      <img
+        src={
+          movie.poster !== 'N/A'
+            ? movie.poster
+            : 'https://www.mockofun.com/wp-content/uploads/2019/10/movie-poster-credits-178.jpg'
+        }
+        alt={`${movie.title} poster`}
+      />
       <h3>{movie.title}</h3>
       <div>
         <p>
