@@ -56,10 +56,15 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 export default function App() {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [selectedId, setSelectedId] = useState(null);
+
+  // const [watched, setWatched] = useState([]);
+  const [watched, setWatched] = useState(function () {
+    const watched = JSON.parse(localStorage.getItem('watched'));
+    return watched || [];
+  });
 
   // useEffect(function () {
   //   console.log('After initial render');
@@ -88,11 +93,20 @@ export default function App() {
 
   function handleAddWathched(movie) {
     setWatched((watched) => [...watched, movie]);
+
+    // localStorage.setItem('watched', JSON.stringify([...watched, movie]));
   }
 
   function handleDeleteWatched(id) {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
+
+  useEffect(
+    function () {
+      localStorage.setItem('watched', JSON.stringify(watched));
+    },
+    [watched]
+  );
 
   useEffect(() => {
     const controller = new AbortController();
